@@ -6,7 +6,7 @@ module.exports = (grunt) ->
   grunt.initConfig
     concat:
       build:
-        src: ['support/raphael-min.js', 'src/collector.js', 'src/coordinate.js', 'src/cpu.js']
+        src: ['support/raphael.js', 'src/collector.js', 'src/coordinate.js', 'src/cpu.js']
         dest: 'build/cpu.js'
     min:
       build:

@@ -43,3 +43,4 @@ init = (data) ->
   draw_xy()
 
 @cpu_Coordinate = {init, draw_data}
+
