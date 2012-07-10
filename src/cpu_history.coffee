@@ -1,7 +1,11 @@
 
+DATA_SIZE_LIMIT = 10000
+
+return if @g_cpu_history
+
 data = []
-step  = 50
-d     = null
+step = 50
+d    = null
 
 cal_cpu = ->
   d2 = new Date()
@@ -16,11 +20,11 @@ add_100 = (count) ->
     add_percent 100
 
 add_percent = (percent) ->
+  return if data.length > DATA_SIZE_LIMIT
   data.push percent
-  # console?.log? percent
 
 init = ->
   d = new Date()
   setTimeout cal_cpu, step
 
-@cpu_Collector = {init, data}
+@g_cpu_history = {init, data}

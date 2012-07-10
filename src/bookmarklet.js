@@ -2,6 +2,10 @@
 (function() {
   var build_path_str, draw_data, draw_paper, draw_xy, init, limit, p, paper, path_padding, path_step, pp, ps, sh, sph, spv, stage_height, stage_padding_horiz, stage_padding_vert, stage_width, sw;
 
+  if (!this.g_cpu_history) {
+    return;
+  }
+
   paper = null;
 
   spv = stage_padding_vert = 10;
@@ -21,7 +25,7 @@
   limit = 100;
 
   draw_paper = function() {
-    return paper = Raphael(10, 10, stage_width, stage_height);
+    return paper = Raphael(10, 110, stage_width, stage_height);
   };
 
   draw_xy = function() {
@@ -58,14 +62,18 @@
     return ret.replace('L', 'M');
   };
 
-  init = function(data) {
+  init = function() {
+    var _base;
+    if (typeof (_base = this.g_cpu_history).init === "function") {
+      _base.init();
+    }
     draw_paper();
-    return draw_xy();
+    draw_xy();
+    return setInterval(function() {
+      return draw_data(this.g_cpu_history.data);
+    }, 100);
   };
 
-  this.cpu_Coordinate = {
-    init: init,
-    draw_data: draw_data
-  };
+  init();
 
 }).call(this);

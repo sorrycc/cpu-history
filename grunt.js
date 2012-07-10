@@ -6,15 +6,23 @@
     default_tasks = 'concat min';
     grunt.initConfig({
       concat: {
-        build: {
-          src: ['support/raphael.js', 'src/collector.js', 'src/coordinate.js', 'src/cpu.js'],
-          dest: 'build/cpu.js'
+        bookmarklet: {
+          src: ['src/cpu_history.js', 'support/raphael-min.js', 'src/bookmarklet.js'],
+          dest: 'dest/bookmarklet.js'
+        },
+        page: {
+          src: ['src/cpu_history.js', 'src/page.js'],
+          dest: 'dest/page.js'
         }
       },
       min: {
-        build: {
-          src: 'build/cpu.js',
-          dest: 'build/cpu-min.js'
+        bookmarklet: {
+          src: 'dest/bookmarklet.js',
+          dest: 'dest/bookmarklet-min.js'
+        },
+        page: {
+          src: 'dest/page.js',
+          dest: 'dest/page-min.js'
         }
       },
       watch: {

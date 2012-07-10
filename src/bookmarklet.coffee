@@ -1,4 +1,6 @@
 
+return if !@g_cpu_history
+
 paper = null
 spv   = stage_padding_vert  = 10
 sph   = stage_padding_horiz = 30
@@ -10,7 +12,7 @@ p     = null # path
 limit = 100
 
 draw_paper = ->
-  paper = Raphael(10, 10, stage_width, stage_height)
+  paper = Raphael(10, 110, stage_width, stage_height)
 
 draw_xy = ->
   paper.rect(10, 10, sw, sh).attr
@@ -38,9 +40,12 @@ build_path_str = (data) ->
     ret += "L#{sph+pp+ps*index} #{spv+pp+(100-item)/100*(sh-spv*2-pp*2)}"
   ret.replace 'L', 'M'
 
-init = (data) ->
+init = ->
+  @g_cpu_history.init?()
   draw_paper()
   draw_xy()
+  setInterval ->
+    draw_data @g_cpu_history.data
+  , 100
 
-@cpu_Coordinate = {init, draw_data}
-
+init()

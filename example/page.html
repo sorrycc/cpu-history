@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Demo</title>
+</head>
+<body>
+
+  <button id="btn1">sleep 1000ms</button>
+  <button id="btn2">sleep 300ms</button>
+  <button id="btn3">sleep 30ms</button>
+
+  <script src="../dest/page.js"></script>
+  <script src="../support/jquery-1.7.2.min.js"></script>
+
+  <script>
+    $('#btn1').click(function() {
+      var d = new Date();
+      while (new Date() - d < 1000) {}
+    });
+    $('#btn2').click(function() {
+      var d = new Date();
+      while (new Date() - d < 300) {}
+    });
+    $('#btn3').click(function() {
+      var d = new Date();
+      while (new Date() - d < 30) {}
+    });
+  </script>
+
+</body>
+</html>
