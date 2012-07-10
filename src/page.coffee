@@ -32,12 +32,18 @@ bacon = ->
 filter_data = (data) ->
   count_100 = 0
   count_50  = 0
+  count_20  = 0
+  count_0  = 0
   for item in data
     if item == 100
       count_100++
     else if item >= 50
       count_50++
-  [count_100, count_50]
+    else if item >= 20
+      count_20++
+    else
+      count_0++
+  [count_100, count_50, count_20, count_0]
 
 get_base_url = ->
   # apikey 先写死.

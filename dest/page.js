@@ -89,18 +89,24 @@
   };
 
   filter_data = function(data) {
-    var count_100, count_50, item, _i, _len;
+    var count_0, count_100, count_20, count_50, item, _i, _len;
     count_100 = 0;
     count_50 = 0;
+    count_20 = 0;
+    count_0 = 0;
     for (_i = 0, _len = data.length; _i < _len; _i++) {
       item = data[_i];
       if (item === 100) {
         count_100++;
       } else if (item >= 50) {
         count_50++;
+      } else if (item >= 20) {
+        count_20++;
+      } else {
+        count_0++;
       }
     }
-    return [count_100, count_50];
+    return [count_100, count_50, count_20, count_0];
   };
 
   get_base_url = function() {
